@@ -5,14 +5,14 @@ var Schema = mongoose.Schema;
 
 var nodeSchema = new Schema({
   Node: String,
-  PosxNode: String,
-  PosyNode: String,
+  // PosxNode: String,
+  // PosyNode: String,
   Loc: {
     type: {type: String},
     coordinates: [],
   },
   Name: String,
-  Lines: String
+  // Lines: String
 });
 
 nodeSchema.index({Loc: "2dsphere"});

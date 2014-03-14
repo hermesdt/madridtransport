@@ -23,8 +23,9 @@ function handleResponse(e, res, rows){
       output += "<RESULTADO>0</RESULTADO>";
       rows.forEach(function(row){
         var obj = row.obj;
-        output += "<REG><Name>"+obj["Name"]+"</Name><Node>"+obj["Node"]+"</Node><Lines>"+obj["Lines"]+"</Lines>"+
-        "<PosxNode>"+obj["PosxNode"]+"</PosxNode><PosyNode>"+obj["PosyNode"]+"</PosyNode></REG>";
+        var loc = obj["Loc"]["coordinates"];
+        output += "<REG><Name>"+obj["Name"]+"</Name><Node>"+obj["Node"]+"</Node>"+
+        "<PosxNode>"+loc[0]+"</PosxNode><PosyNode>"+loc[1]+"</PosyNode></REG>";
       });
       output += "</TABLA>";
       res.send(output);
