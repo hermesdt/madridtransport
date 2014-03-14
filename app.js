@@ -3,9 +3,14 @@
  * Module dependencies.
  */
 
+var mongoose = require("mongoose");
+if(mongoose.connection.db == undefined)
+  mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost/emt");
+  
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var nodes = require("./routes/nodes");
 
 var app = express();
 
@@ -19,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 // app.use(app.router);
+app.get("/nodes", nodes.index)
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only

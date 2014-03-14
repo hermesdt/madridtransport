@@ -10,8 +10,7 @@ json = JSON.parse(json)
 json["TABLA"]["REG"].each do |reg|
   utm = GeoUtm::UTM.new('30T', reg["PosxNode"].gsub(",", ".").to_f, reg["PosyNode"].gsub(",", ".").to_f)
   ll = utm.to_lat_lon
-  reg["Latitude"] = ll.lat
-  reg["Longitude"] = ll.lon
+  reg["Loc"] = {"Latitude" => ll.lat, "Longitude" => ll.lon}
   reg.delete("PosxNode")
   reg.delete("PosyNode")
 end
