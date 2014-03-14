@@ -5,6 +5,8 @@ var Schema = mongoose.Schema;
 
 var nodeSchema = new Schema({
   Node: String,
+  PosxNode: String,
+  PosyNode: String,
   Loc: {
     type: {type: String},
     coordinates: [],
