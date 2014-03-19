@@ -11,7 +11,7 @@ json["TABLA"]["REG"].forEach(function(reg){
   var loc = reg["Loc"];
   var locData = {type: "Point", coordinates: [parseFloat(loc["Longitude"]), parseFloat(loc["Latitude"])]};
   var node = new Node({Node: reg["Node"], Name: reg["Name"],
-  Loc: locData});
+  Loc: locData, Lines: reg["Lines"]});
 
   node.save(function(e){});
 });

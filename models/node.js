@@ -12,7 +12,7 @@ var nodeSchema = new Schema({
     coordinates: [],
   },
   Name: String,
-  // Lines: String
+  Lines: String
 });
 
 nodeSchema.index({Loc: "2dsphere"});

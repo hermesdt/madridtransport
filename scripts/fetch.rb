@@ -15,7 +15,8 @@ def fetch_gps(node_id)
   stop = xml.css("Stop")[0]
   loc = {"Longitude" => stop.css("CoordinateX")[0].text, "Latitude" => stop.css("CoordinateY")[0].text}
   puts "Done for node_id: #{node_id}"
-  {"Node" => stop.css("IdStop")[0].text, "Name" => stop.css("Name")[0].text, "Loc" => loc}
+  lines = xml.css("Line").map{|line| line.css("Label").text}.join("|")
+  {"Node" => stop.css("IdStop")[0].text, "Name" => stop.css("Name")[0].text, "Loc" => loc, "Lines" => lines}
 end
 
 f = File.open("data.json", "w")
