@@ -25,7 +25,7 @@ function handleResponse(e, res, rows){
         var obj = row.obj;
         var loc = obj["Loc"]["coordinates"];
         output += "<REG><Name>"+obj["Name"]+"</Name><Node>"+obj["Node"]+"</Node>"+
-        "<PosxNode>"+loc[0]+"</PosxNode><PosyNode>"+loc[1]+"</PosyNode></REG>";
+        "<PosxNode>"+loc[0]+"</PosxNode><PosyNode>"+loc[1]+"</PosyNode><Lines>"+obj["Lines"]+"</Lines></REG>";
       });
       output += "</TABLA>";
       res.send(output);
