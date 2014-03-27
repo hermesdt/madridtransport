@@ -1,13 +1,18 @@
 var Node = require("../models/node").Node;
 
 exports.index = function(req, res){
+  
   var lon = parseFloat(req.query.lon);
   var lat = parseFloat(req.query.lat);
   var distance = parseFloat(req.query.distance);
-  var point = { type : "Point", coordinates : [lon, lat] };
-  Node.geoNear(point, {distanceMultiplier: 6371000, maxDistance: distance / 6371000, spherical: true}, function(e, rows){
-    handleResponse(e, res, rows);
-  });
+  if(isNaN(lon * lat * distance)){
+    res.end(500);
+  }else{
+    var point = { type : "Point", coordinates : [lon, lat] };
+    Node.geoNear(point, {distanceMultiplier: 6371000, maxDistance: distance / 6371000, spherical: true}, function(e, rows){
+      handleResponse(e, res, rows);
+    });
+  }
 };
 
 function handleResponse(e, res, rows){
