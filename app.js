@@ -26,6 +26,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 // app.use(app.router);
 app.get("/nodes", nodes.index)
+app.get("/nodes/:id", nodes.show);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only

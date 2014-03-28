@@ -36,3 +36,19 @@ function handleResponse(e, res, rows){
       res.send(output);
     }
 };
+
+exports.show = function(req, res){
+  var id = req.params.id;
+  if(isNaN(parseFloat(id))){
+    res.send({}, 500);
+  }else{
+    Node.findOne({Node: id}, function(err, doc){
+      if(err || doc == null){
+        res.send({}, 500);
+      }else{
+        res.send({id: doc.Node, name: doc.Name});
+        res.end(200);
+      }
+    });
+  }
+};

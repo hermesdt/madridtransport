@@ -16,5 +16,6 @@ var nodeSchema = new Schema({
 });
 
 nodeSchema.index({Loc: "2dsphere"});
+nodeSchema.index({Node: 1});
 
 exports.Node = mongoose.model('Node', nodeSchema);
