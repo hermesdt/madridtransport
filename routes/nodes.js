@@ -46,7 +46,8 @@ exports.show = function(req, res){
       if(err || doc == null){
         res.send({}, 500);
       }else{
-        res.send({id: doc.Node, name: doc.Name});
+        res.send({id: doc.Node, name: doc.Name,
+          latitude: doc.Loc.coordinates[1], longitude: doc.Loc.coordinates[0]});
         res.end(200);
       }
     });
