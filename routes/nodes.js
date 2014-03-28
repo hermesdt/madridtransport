@@ -40,11 +40,11 @@ function handleResponse(e, res, rows){
 exports.show = function(req, res){
   var id = req.params.id;
   if(isNaN(parseFloat(id))){
-    res.send({}, 500);
+    res.send(500, '');
   }else{
     Node.findOne({Node: id}, function(err, doc){
       if(err || doc == null){
-        res.send({}, 500);
+        res.send(500, '');
       }else{
         res.send({id: doc.Node, name: doc.Name,
           latitude: doc.Loc.coordinates[1], longitude: doc.Loc.coordinates[0]});
