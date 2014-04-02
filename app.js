@@ -3,7 +3,6 @@
  * Module dependencies.
  */
 
-require("newrelic");
 var mongoose = require("mongoose");
 if(mongoose.connection.db == undefined)
   mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost/emt");
